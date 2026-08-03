@@ -40,7 +40,7 @@
       color: var(--ink);
     }
 
-    /* —— Intro —— */
+    /* —— Intro / envelope —— */
     .intro {
       position: fixed;
       inset: 0;
@@ -51,7 +51,8 @@
       background:
         radial-gradient(ellipse 70% 50% at 50% 40%, rgba(245, 213, 106, 0.28) 0%, transparent 55%),
         linear-gradient(165deg, #f4f8fc 0%, #9ec4e8 55%, #3d7ab8 100%);
-      transition: opacity 0.9s var(--ease), visibility 0.9s;
+      transition: opacity 0.7s var(--ease), visibility 0.7s;
+      perspective: 1200px;
     }
 
     .intro.is-gone {
@@ -61,35 +62,131 @@
     }
 
     .intro__inner {
-      padding: 2rem;
+      padding: 1rem;
       animation: rise 1.1s var(--ease) both;
     }
 
-    .intro__flower {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 1.4rem;
-      animation: spin-slow 28s linear infinite, bob 5s ease-in-out infinite alternate;
-      filter: drop-shadow(0 12px 28px rgba(180, 120, 20, 0.3));
+    .envelope {
+      position: relative;
+      width: min(86vw, 340px);
+      height: 220px;
+      margin: 0 auto 1.5rem;
+      transform-style: preserve-3d;
+    }
+
+    .envelope__back {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #d6e8f8 0%, #9ec4e8 100%);
+      border-radius: 4px 4px 6px 6px;
+      box-shadow: 0 18px 40px rgba(47, 111, 173, 0.28);
+    }
+
+    .envelope__letter {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 18%;
+      height: 78%;
+      background: #f7fbff;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 3px;
+      box-shadow: 0 8px 20px rgba(18, 32, 49, 0.1);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      transform: translateY(18%);
+      transition: transform 0.85s var(--ease);
+      z-index: 1;
+    }
+
+    .envelope__letter p {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: #2f6fad;
+      margin: 0;
+    }
+
+    .envelope__flap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 58%;
+      background: linear-gradient(180deg, #b8d4f0 0%, #8fb6d9 100%);
+      clip-path: polygon(0 0, 50% 78%, 100% 0);
+      transform-origin: top center;
+      transition: transform 0.9s var(--ease);
+      z-index: 3;
+      filter: drop-shadow(0 6px 12px rgba(47, 111, 173, 0.2));
+    }
+
+    .envelope__front {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 58%;
+      background: linear-gradient(180deg, #a8ccea 0%, #6aa3d1 100%);
+      clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
+      z-index: 2;
+    }
+
+    .envelope__seal {
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      width: 42px;
+      height: 42px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #f5d56a, #e8b020 55%, #c99512);
+      z-index: 4;
+      box-shadow: 0 4px 12px rgba(180, 120, 20, 0.35);
+      transition: opacity 0.4s ease, transform 0.4s var(--ease);
+    }
+
+    .envelope.is-opening .envelope__flap {
+      transform: rotateX(188deg);
+    }
+
+    .envelope.is-opening .envelope__letter {
+      transform: translateY(-72%);
+    }
+
+    .envelope.is-opening .envelope__seal {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    .intro__copy {
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .intro.is-opening .intro__copy {
+      opacity: 0;
+      transform: translateY(10px);
     }
 
     .intro h1 {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-weight: 600;
-      font-size: clamp(2.4rem, 8vw, 3.8rem);
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
       line-height: 1;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.55rem;
+      color: var(--ink);
     }
 
-    .intro p {
+    .intro__copy > p {
       font-weight: 300;
       color: var(--dusk);
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.35rem;
       font-size: 1.02rem;
     }
 
-    .intro button {
+    .intro button#open-site {
       font-family: inherit;
       font-size: 0.88rem;
       font-weight: 500;
@@ -105,9 +202,34 @@
       transition: transform 0.3s var(--ease), background 0.3s ease;
     }
 
-    .intro button:hover {
+    .intro button#open-site:hover {
       background: var(--ink);
       transform: translateY(-2px);
+    }
+
+    html.night .envelope__back {
+      background: linear-gradient(160deg, #1e3a5c 0%, #2a4a6a 100%);
+    }
+
+    html.night .envelope__flap {
+      background: linear-gradient(180deg, #3d6a9a 0%, #2f5a88 100%);
+    }
+
+    html.night .envelope__front {
+      background: linear-gradient(180deg, #2f5a88 0%, #1e3a5c 100%);
+    }
+
+    html.night .envelope__letter {
+      background: #152033;
+      border-color: rgba(126, 176, 220, 0.25);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .envelope__flap,
+      .envelope__letter,
+      .envelope__seal {
+        transition: none !important;
+      }
     }
 
     /* —— Progress —— */
@@ -1258,14 +1380,18 @@
 
   <div class="intro" id="intro">
     <div class="intro__inner">
-      <svg class="intro__flower" viewBox="0 0 64 64" aria-hidden="true">
-        <g id="sun-petals"></g>
-        <circle cx="32" cy="32" r="11.5" fill="#4A2E16"/>
-        <circle cx="32" cy="32" r="7.8" fill="#5C3A1E" opacity="0.7"/>
-      </svg>
-      <h1>Für Kadriye</h1>
-      <p>Sana küçük bir sürpriz. Müzik de var.</p>
-      <button type="button" id="open-site">Aç</button>
+      <div class="envelope" id="envelope" aria-hidden="true">
+        <div class="envelope__back"></div>
+        <div class="envelope__letter"><p>Für Kadriye</p></div>
+        <div class="envelope__front"></div>
+        <div class="envelope__flap"></div>
+        <div class="envelope__seal"></div>
+      </div>
+      <div class="intro__copy">
+        <h1>Für Kadriye</h1>
+        <p>Sana küçük bir sürpriz. Müzik de var.</p>
+        <button type="button" id="open-site">Mektubu aç</button>
+      </div>
     </div>
   </div>
 
@@ -1531,13 +1657,13 @@
         </svg>`;
     }
 
-    document.querySelector("#sun-petals").innerHTML = sunPetalsMarkup();
     document.querySelector("#hero-sun").innerHTML =
       sunPetalsMarkup() +
       `<circle cx="32" cy="32" r="11.5" fill="#4A2E16"/><circle cx="32" cy="32" r="7.8" fill="#5C3A1E" opacity="0.7"/>`;
 
     /* Intro */
     const intro = document.getElementById("intro");
+    const envelope = document.getElementById("envelope");
     /* —— Music: YouTube (Sen bana baktığın zaman) + optional local music.mp3 —— */
     let ytPlayer = null;
     let musicReady = false;
@@ -1678,10 +1804,17 @@
     });
 
     document.getElementById("open-site").addEventListener("click", () => {
-      intro.classList.add("is-gone");
-      document.body.classList.remove("is-locked");
-      spawnBurst(window.innerWidth / 2, window.innerHeight * 0.42, true);
+      const btn = document.getElementById("open-site");
+      btn.disabled = true;
+      intro.classList.add("is-opening");
+      envelope.classList.add("is-opening");
       startMusic();
+      const delay = reduce ? 80 : 1100;
+      setTimeout(() => {
+        intro.classList.add("is-gone");
+        document.body.classList.remove("is-locked");
+        spawnBurst(window.innerWidth / 2, window.innerHeight * 0.42, true);
+      }, delay);
     });
 
     /* Parallax */
