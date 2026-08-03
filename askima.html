@@ -1538,11 +1538,12 @@
 
     /* Intro */
     const intro = document.getElementById("intro");
-    /* —— Music: local music.mp3 (preferred) + YouTube backup —— */
+    /* —— Music: YouTube (Sen bana baktığın zaman) + optional local music.mp3 —— */
     let ytPlayer = null;
     let musicReady = false;
     let musicMuted = false;
     let usingYt = false;
+    const YT_ID = "Z6adfl44qCI";
     const musicBtn = document.getElementById("music-btn");
     const bgMusic = document.getElementById("bg-music");
     bgMusic.volume = 0.55;
@@ -1551,7 +1552,7 @@
       ytPlayer = new YT.Player("yt-player", {
         height: "124",
         width: "220",
-        videoId: "ha2sOd4XECk",
+        videoId: YT_ID,
         playerVars: {
           autoplay: 0,
           controls: 0,
@@ -1561,7 +1562,7 @@
           playsinline: 1,
           rel: 0,
           loop: 1,
-          playlist: "ha2sOd4XECk",
+          playlist: YT_ID,
           origin: location.origin === "null" ? undefined : location.origin,
         },
         events: {
@@ -1625,17 +1626,24 @@
 
     function startMusic() {
       showMusicBtn(false);
-      playLocal().catch(() => {
+      // On https (Vercel) prefer YouTube; locally try mp3 first
+      const preferYt = location.protocol === "https:";
+      const primary = preferYt ? playYouTube : playLocal;
+      const secondary = preferYt ? playLocal : playYouTube;
+
+      const trySecondary = () => {
         let tries = 0;
-        const waitYt = () => {
-          playYouTube().catch(() => {
+        const wait = () => {
+          secondary().catch(() => {
             tries += 1;
-            if (tries < 25) setTimeout(waitYt, 200);
+            if (tries < 30) setTimeout(wait, 200);
             else showMusicBtn(false);
           });
         };
-        waitYt();
-      });
+        wait();
+      };
+
+      primary().catch(trySecondary);
     }
 
     function toggleMusic() {
@@ -1652,10 +1660,10 @@
         return;
       }
 
-      if (bgMusic.paused) {
+      if (bgMusic.paused || bgMusic.ended) {
         playLocal().catch(() => {
           playYouTube().catch(() => {
-            alert("Müzik için klasöre music.mp3 koy (Bir Rüya Gördüm). Sonra ♪ butonuna bas.");
+            alert("Müzik çalmadı. İnternet bağlantını kontrol et veya ♪ butonuna tekrar bas.");
           });
         });
       } else {
