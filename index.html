@@ -868,17 +868,144 @@
 
     .tattoo {
       display: block;
-      width: min(180px, 48%);
+      width: min(280px, 78%);
       height: auto;
-      margin: 0 auto 1.6rem;
+      margin: 0 auto 0.65rem;
       border-radius: 4px;
       filter: drop-shadow(0 8px 20px rgba(47, 111, 173, 0.14));
+      object-fit: cover;
+    }
+
+    .tattoo__cap {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--blue);
+      margin-bottom: 1.6rem;
     }
 
     .nick {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       color: var(--blue);
+    }
+
+    /* —— Moments gallery —— */
+    .moments {
+      padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .moments__head {
+      max-width: 36rem;
+      margin: 0 auto 1.75rem;
+      text-align: center;
+    }
+
+    .moments__head .panel__label {
+      margin-bottom: 0.55rem;
+    }
+
+    .moments__head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 0.55rem;
+    }
+
+    .moments__head p {
+      font-weight: 300;
+      color: var(--dusk);
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+
+    .moments__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      max-width: 42rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 720px) {
+      .moments__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+    }
+
+    .moments__grid .moments__item {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      border-radius: 3px;
+    }
+
+    .moments__grid .moments__item:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .moments__grid figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      background: color-mix(in srgb, var(--blue) 12%, #fff);
+      aspect-ratio: 3 / 4;
+      width: 100%;
+    }
+
+    .moments__grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s var(--ease);
+    }
+
+    .moments__grid .moments__item:hover img,
+    .moments__grid .moments__item:active img {
+      transform: scale(1.04);
+    }
+
+    .moments__grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: #f4f8fc;
+      background: linear-gradient(transparent, rgba(20, 40, 70, 0.72));
+    }
+
+    .moments__empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--dusk);
+      border: 1px dashed color-mix(in srgb, var(--blue) 35%, transparent);
+      border-radius: 4px;
+    }
+
+    html.night .moments__empty {
+      border-color: rgba(126, 176, 220, 0.28);
+      color: #b8cce0;
     }
 
     /* —— Closing —— */
@@ -1233,6 +1360,7 @@
 
       .letter,
       .keepsake,
+      .moments,
       .extras {
         padding-left: max(1rem, env(safe-area-inset-left));
         padding-right: max(1rem, env(safe-area-inset-right));
@@ -1289,7 +1417,7 @@
       }
 
       .tattoo {
-        width: min(150px, 55%);
+        width: min(240px, 88%);
         margin-bottom: 1.2rem;
       }
 
@@ -1336,12 +1464,12 @@
       }
 
       .photo__card {
-        width: min(94vw, 380px);
+        width: min(96vw, 520px);
         padding: 0.65rem 0.65rem 1rem;
       }
 
       .photo__card img {
-        max-height: 58svh;
+        max-height: 62svh;
       }
 
       .photo__close {
@@ -1396,7 +1524,7 @@
 
     .photo__card {
       position: relative;
-      width: min(92vw, 380px);
+      width: min(94vw, 520px);
       background: rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 28px 70px rgba(18, 32, 49, 0.28);
@@ -1413,9 +1541,9 @@
       display: block;
       width: 100%;
       height: auto;
-      max-height: 62vh;
-      object-fit: cover;
-      object-position: center top;
+      max-height: 72svh;
+      object-fit: contain;
+      object-position: center;
       background: #d5e6f4;
     }
 
@@ -1656,13 +1784,13 @@
     </div>
 
     <div class="hero__content">
-      <p class="eyebrow">Für dich</p>
+      <p class="eyebrow">Für dich · Senin için</p>
       <button type="button" class="brand" id="open-photo" aria-haspopup="dialog">
         Kadriye.
         <span class="brand__hint">dokun — fotoğraf</span>
       </button>
       <p class="lede">
-        Almanca hevesimle başladık. Soru sordum, sen cevapladın — sonra konuşmak, sadece ders olmaktan çıktı.
+        Bugün yanındaydım: elin elimde, gülüşün aklımda, ve annenin adıyla yeni bir başlangıç.
       </p>
       <a class="cta" href="#mektup">
         Oku
@@ -1684,27 +1812,27 @@
       <span>Lavendel</span>
     </div>
     <div class="letter__inner is-sealed reveal" id="letter-card">
-      <p class="letter__date">für dich</p>
-      <h2>Hallo, bebeğim.</h2>
+      <p class="letter__date">für Kadriye</p>
+      <h2>Hallo, Kadriye.</h2>
       <p>
-        Bu bir site değil aslında. Sana yazılmış bir mektup — sadece tarayıcıda duruyor. Telefondan aç, işten geç gel, yorgun ol; yine de buradayım.
+        Bu bir web sitesi gibi görünüyor; aslında sana yazılmış bir mektup. Bugünü unutmamak için buraya bıraktım.
       </p>
       <p>
-        Hatırlıyor musun? Almanca hevesimle yanına gelip “bu nasıl denir?” diye soruyordum. Sen cevaplıyordun, ben takılıyordum, sen yine cevaplıyordun. Ders bahanesiydi. Asıl plan: seni tanımak. (İtiraf: plan işe yaradı.)
+        Her şey Almanca ile başladı. “Bu nasıl denir?” diye sordum, sen cevapladın — sonra konuşmak, sadece ders olmaktan çıktı. Bugün ise yan yana oturduk, ellerimiz birbirinde kaldı, güzel bir gün geçirdik.
       </p>
       <p>
-        Bir gün “cimri” dedin. Bir kere. Ben de o günden beri senin cimrinim. Sen benim <span class="nick">bebeğim</span>sin. Adaletli bir anlaşma — sen kazandın, ben de kazandım.
+        Seninle ilk dövmeni yaptık: annenin adı — Mualla — ve yanında bir papatya. O anı seninle paylaşmak özeldi. Sonra yemek yedik, fotoğraflar çektik, güldük. Bittiğinde “sana bisiklet sürmeyi öğreteceğim” dedin — bir sonraki buluşmamızı da senin cümlenle sevdim.
       </p>
       <p>
-        Bugün seninle. Heyecanlıyım; biraz da “acaba Almanca mı konuşsak” diye düşünüyorum… ama hayır. Bugün sadece sen. Kelimeler sonra gelir. En önemlisi zaten belli:
+        Bu yüzden sana sade ve net soruyorum:
       </p>
       <p class="love-line">
         <span class="typed" id="typed"></span>
       </p>
       <p class="letter__ps">
-        P.S. Havaalanından geç dönsen bile burası açık. Kapıyı çalma — içeri gir, gül, “cimri” de. Alıştım.
+        P.S. Bisiklet dersinde yanında olacağım. Elini yine tutarım — söz.
       </p>
-      <span class="sign">Seni düşünen cimrin.</span>
+      <span class="sign">Ömer</span>
     </div>
   </section>
 
@@ -1712,13 +1840,14 @@
     <div class="keepsake__frame reveal">
       <div class="keepsake__head">
         <p class="keepsake__label">Ein Andenken · Bir anı</p>
-        <h2>Sana bırakıyorum bunu.</h2>
+        <h2>Bugünü saklıyorum.</h2>
         <p class="keepsake__sub">
-          Bunu bir anı defteri gibi sakla. Ciddi yerleri de var, güldüren yerleri de — ikisi birden olsun istedim. <span class="nick">Bebeğim</span>, sen hak ediyorsun.
+          Küçük bir anı defteri. Ciddi, sakin, senin için — paylaşılınca da yakışsın diye.
         </p>
       </div>
 
-      <img class="tattoo" src="dovme.png" alt="Ayçiçeği ve lavanta — yapmak istediğin dövme" />
+      <img class="tattoo" src="dovme.jpg" alt="Mualla ve papatya dövmesi" />
+      <p class="tattoo__cap">Mualla — yanında bir papatya.</p>
 
       <div class="pages">
         <article class="page reveal">
@@ -1726,60 +1855,154 @@
             <span>Seite I</span>
             <time>Başlangıç</time>
           </div>
-          <h3>Almanca bahanesi.</h3>
+          <h3>Almanca ile başladık.</h3>
           <p>
-            “Bu nasıl denir?” diye geldim. Aslında “sen nasılsın?” demek istiyordum — ama o Almanca’da daha zordu. Sen cevap verdin, ben kaldım. Ders değil, başlangıçtı.
+            Sorularım bahaneydi; asıl istediğim seni tanımakti. Sen sabırla cevap verdin. O küçük konuşmalar bizi buraya getirdi.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite II</span>
-            <time>Biz</time>
+            <time>Bugün</time>
           </div>
-          <h3>Bebeğim &amp; Cimri.</h3>
+          <h3>Yan yana.</h3>
           <p>
-            Ben sana <span class="nick">bebeğim</span> diyorum. Sen “cimri” dedin — bir kere yeterdi, marka oldu. Trademark sende. Ben sadece kullanıyorum, telif ödemiyorum. (Cimriyiz ya.)
+            Ellerimiz uzun süre birbirinde kaldı. Konuştuk, güldük, yürüdük. En güzel kısım karmaşık değildi — sadece seninle olmaktı.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite III</span>
-            <time>8 Kasım</time>
+            <time>Dövme</time>
           </div>
-          <h3>Senin günün.</h3>
+          <h3>Mualla ve papatya.</h3>
           <p>
-            8 Kasım — Kadriye günü. O gün bu sayfayı açarsan ekstra puan. Açmazsan da açmış sayıyorum; cimri değilim, cömertim. (Bazen.)
+            İlk dövmeni birlikte yaşadık. Annenin adını ve yanındaki papatyayı — bu günü de onunla hatırlayacağım.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite IV</span>
-            <time>Havaalanı</time>
+            <time>Sonra</time>
           </div>
-          <h3>Geç dönsen de.</h3>
+          <h3>Bisiklet sözü.</h3>
           <p>
-            Havaalanı, geç saatler, yorgun adımlar… Anlıyorum. Bu yüzden burayı “gece açık market” yaptım: her saat hizmet, kalp ücretsiz, Almanca dersi opsiyonel.
+            “Sana bisiklet sürmeyi öğreteceğim” demen, bugünün ardından en tatlı cümleydi. Bir sonraki buluşmayı da heyecanla bekliyorum.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite V</span>
-            <time>Dövmen</time>
+            <time>Sen</time>
           </div>
-          <h3>Ayçiçeği ve lavanta.</h3>
+          <h3>Kadriye.</h3>
           <p>
-            Yapmak istediğin dövme burada. En sevdiğin renk mavi — lavantalar da o tonda. Bir gün teninde; şimdilik ekranda. Çalıntı değil, ön sipariş.
+            8 Kasım senin günün. Havaalanındaki geç saatlerin olduğunu biliyorum — bu sayfa yine de senin için açık. Fotoğraflar aşağıda; bu defter seninle büyüyor.
           </p>
         </article>
       </div>
 
       <p class="keepsake__note">
-        “Gül de, sakla da — ikisi birden serbest, bebeğim.”
+        “Bugün seninle olmak, yeterdi.”
       </p>
+    </div>
+  </section>
+
+  <section class="moments" id="fotolar">
+    <div class="moments__head reveal">
+      <p class="panel__label">Unsere Fotos · Bizim kareler</p>
+      <h2>Bugünden.</h2>
+      <p>Bugünden kareler. Seninle olan her anı burada tutuyorum.</p>
+    </div>
+    <div class="moments__grid" id="moments-grid">
+      <button type="button" class="moments__item" data-src="photos/00-biz.jpg" data-cap="Biz." aria-label="Fotoğrafı aç">
+        <figure>
+          <img src="photos/00-biz.jpg" alt="Biz" loading="lazy" />
+          <figcaption>Biz</figcaption>
+        </figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/02.jpg" data-cap="Gülüşün." aria-label="Fotoğrafı aç">
+        <figure>
+          <img src="photos/02.jpg" alt="Kadriye" loading="lazy" />
+          <figcaption>Gülüşün</figcaption>
+        </figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/15.jpg" data-cap="Telefon oyunları." aria-label="Fotoğrafı aç">
+        <figure>
+          <img src="photos/15.jpg" alt="Kadriye" loading="lazy" />
+          <figcaption>Oyun</figcaption>
+        </figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/01.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/01.jpg" alt="" loading="lazy" /><figcaption>01</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/03.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/03.jpg" alt="" loading="lazy" /><figcaption>03</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/04.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/04.jpg" alt="" loading="lazy" /><figcaption>04</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/05.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/05.jpg" alt="" loading="lazy" /><figcaption>05</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/06.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/06.jpg" alt="" loading="lazy" /><figcaption>06</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/07.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/07.jpg" alt="" loading="lazy" /><figcaption>07</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/08.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/08.jpg" alt="" loading="lazy" /><figcaption>08</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/09.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/09.jpg" alt="" loading="lazy" /><figcaption>09</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/10.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/10.jpg" alt="" loading="lazy" /><figcaption>10</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/11.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/11.jpg" alt="" loading="lazy" /><figcaption>11</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/12.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/12.jpg" alt="" loading="lazy" /><figcaption>12</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/13.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/13.jpg" alt="" loading="lazy" /><figcaption>13</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/14.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/14.jpg" alt="" loading="lazy" /><figcaption>14</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/16.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/16.jpg" alt="" loading="lazy" /><figcaption>16</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/17.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/17.jpg" alt="" loading="lazy" /><figcaption>17</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/18.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/18.jpg" alt="" loading="lazy" /><figcaption>18</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/19.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/19.jpg" alt="" loading="lazy" /><figcaption>19</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/20.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/20.jpg" alt="" loading="lazy" /><figcaption>20</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/21.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/21.jpg" alt="" loading="lazy" /><figcaption>21</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/22.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/22.jpg" alt="" loading="lazy" /><figcaption>22</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/23.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/23.jpg" alt="" loading="lazy" /><figcaption>23</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/24.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/24.jpg" alt="" loading="lazy" /><figcaption>24</figcaption></figure>
+      </button>
     </div>
   </section>
 
@@ -1817,11 +2040,11 @@
         </defs>
         <path fill="url(#hg)" d="M32 54S6 36 6 20C6 10 14 4 22 4c5 0 8 3 10 6 2-3 5-6 10-6 8 0 16 6 16 16 0 16-26 34-26 34z"/>
       </svg>
-      <h2>Für immer hier.</h2>
+      <h2>Benimle çıkar mısın?</h2>
       <p>
-        Kadriye — bu mektup kapanmıyor. Geç dön, 8 Kasım’ı kutla, “cimri” de… burası senin için açık. Ciddi yerleri de var, komik yerleri de. Tıpkı biz gibi.
+        Kadriye — bugün seninle güzel bir gün geçirdim. Bu mektubu da onun için yazdım. Cevabın ne olursa olsun, sorum net: benimle çıkar mısın?
       </p>
-      <span class="closing__seal">Ich liebe dich. — Senin (biraz) cimrin.</span>
+      <span class="closing__seal">Ich liebe dich. — Ömer</span>
       <button type="button" class="again" id="again">Başa dön</button>
     </div>
   </footer>
@@ -1842,7 +2065,7 @@
     <div class="photo__card">
       <button type="button" class="photo__close" id="close-photo" aria-label="Kapat">×</button>
       <img id="photo-img" src="kadriye.jpg" alt="Kadriye" />
-      <p class="photo__cap">Bebeğim.</p>
+      <p class="photo__cap">Biz.</p>
     </div>
   </div>
 
@@ -2183,7 +2406,7 @@
       if (typedStarted) return;
       typedStarted = true;
       const el = document.getElementById("typed");
-      const text = "Ich liebe dich.";
+      const text = "Benimle çıkar mısın?";
       if (reduce) {
         el.textContent = text;
         el.classList.add("is-done");
@@ -2242,6 +2465,15 @@
       photoImg.src = PHOTO_DRIVE;
     };
 
+    function showPhoto(src, cap) {
+      photoImg.dataset.triedDrive = "";
+      photoImg.onerror = null;
+      photoImg.src = src;
+      photoImg.alt = cap || "Fotoğraf";
+      photo.querySelector(".photo__cap").textContent = cap || "Biz.";
+      openPhoto();
+    }
+
     function openPhoto() {
       photo.hidden = false;
       requestAnimationFrame(() => photo.classList.add("is-open"));
@@ -2260,7 +2492,7 @@
 
     document.getElementById("open-photo").addEventListener("click", (e) => {
       e.stopPropagation();
-      openPhoto();
+      showPhoto(PHOTO_LOCAL, "Biz.");
     });
     document.getElementById("close-photo").addEventListener("click", (e) => {
       e.stopPropagation();
@@ -2268,6 +2500,12 @@
     });
     photo.addEventListener("click", (e) => {
       if (e.target === photo) closePhoto();
+    });
+    document.getElementById("moments-grid")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".moments__item");
+      if (!btn) return;
+      e.stopPropagation();
+      showPhoto(btn.dataset.src, btn.dataset.cap || "Bugünden.");
     });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && photo.classList.contains("is-open")) closePhoto();
@@ -2310,21 +2548,21 @@
 
     /* —— Daily sentence —— */
     const dailyLines = [
-      "Bugün de Ich liebe dich — cimri versiyon: kısa ama net.",
-      "Geç dönsen de burası açık. Kalp stokta var.",
-      "Ayçiçeğin güneş, lavantan huzur, sen ikisinin birleşimi.",
-      "Almanca soru hakkı bugün ücretsiz. Cevap yine sende.",
-      "8 Kasım uzak olsa da, Kadriye günü her gün biraz.",
-      "Bebeğim yazınca dünya düzeliyor. Denendi, onaylandı.",
-      "Trademark: Cimri. Sahibi: sen. Kullanıcı: ben.",
-      "Havaalanı yorgunluğu + bu sayfa = gece tatlısı.",
-      "Bugünün ödevi: bir kere gülümse. Notu ben vereceğim.",
+      "Bugün seninle olmak, yeterdi.",
       "Für dich — ve sadece für dich.",
-      "Dövmen hayalin burada prova yapıyor.",
-      "Yanlış Almanca söylesem de doğru olan sensin.",
-      "Bu mektup kapanmıyor. Sen kapatsan da ben açık bırakıyorum.",
-      "Mavi sevgin, sarı güneşin, ikisi bir arada: sen.",
-      "Bu sayfanın izi. Her açılışta taze.",
+      "Mualla ve papatya: seninle hatırladığım gün.",
+      "Ellerin elimde kaldı; aklım da sende.",
+      "Bisiklet sözünü unutmadım. Heyecanla bekliyorum.",
+      "Ich liebe dich — kısa, net, samimi.",
+      "Bu sayfa senin için açık. Her saat.",
+      "8 Kasım — Kadriye günü. Takvimde yıldızlı.",
+      "Almanca ile başladık; gülüşlerinle devam ediyoruz.",
+      "Fotoğraflar burada, anılar daha yakında.",
+      "Bir sonraki buluşmada yine yanındayım.",
+      "Gülüşün aklımda kaldı.",
+      "Bu mektup kapanmıyor; sen istediğin kadar aç.",
+      "Mavi sevdiğin renk, bu sayfanın da rengi.",
+      "Benimle çıkar mısın? — sorum bu.",
     ];
     const dayIndex = Math.floor(Date.now() / 86400000) % dailyLines.length;
     document.getElementById("daily-text").textContent = dailyLines[dayIndex];
@@ -2337,22 +2575,22 @@
         q: "“Seni seviyorum” Almanca’da nasıl?",
         opts: ["Ich habe Hunger", "Ich liebe dich", "Gute Nacht", "Wo ist der Bahnhof?"],
         ok: 1,
-        yes: "Aynen. Favorimiz bu — nokta.",
-        no: "Yanlış ama komik. Doğrusu: Ich liebe dich. Cimri bile bunu bilir.",
+        yes: "Doğru — Ich liebe dich.",
+        no: "Doğrusu: Ich liebe dich.",
       },
       {
-        q: "Lavanta Almanca’da?",
-        opts: ["Sonnenblume", "Lavendel", "Flughafen", "Käse"],
+        q: "Papatya Almanca’da?",
+        opts: ["Sonnenblume", "Gänseblümchen", "Flughafen", "Käse"],
         ok: 1,
-        yes: "Lavendel — dövmenin yarısı, senin rengin maviye komşu.",
-        no: "Sonnenblume ayçiçeği, Flughafen havaalanı… Lavendel istedik!",
+        yes: "Gänseblümchen — dövmedeki çiçek.",
+        no: "Doğrusu Gänseblümchen. Sonnenblume ayçiçeği demek.",
       },
       {
-        q: "“Görüşürüz” için en tatlısı?",
+        q: "“Görüşürüz” için tatlısı?",
         opts: ["Auf Wiedersehen", "Bis bald", "Rechnung bitte", "Hilfe!"],
         ok: 1,
-        yes: "Bis bald — bu sayfanın da kapanış ruhu.",
-        no: "Rechnung bitte hesap ister. Biz hesap değil, kalp istiyoruz: Bis bald.",
+        yes: "Bis bald — yakında görüşürüz.",
+        no: "Bis bald daha sıcak duruyor. Rechnung bitte hesap ister.",
       },
     ];
     let qi = 0;
@@ -2387,7 +2625,7 @@
           if (qi < quiz.length - 1) quizNext.hidden = false;
           else {
             quizRestart.hidden = false;
-            quizFb.textContent += " · Quiz bitti — aferin bebeğim (ve cimriye).";
+            quizFb.textContent += " · Quiz bitti — aferin.";
             spawnBurst(window.innerWidth / 2, window.innerHeight * 0.55, true);
           }
         });
