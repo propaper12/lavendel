@@ -891,6 +891,194 @@
       color: var(--blue);
     }
 
+    /* —— Timeline —— */
+    .timeline {
+      padding: clamp(3rem, 8vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+      background:
+        linear-gradient(180deg, var(--mist) 0%, #e4eef8 48%, var(--mist) 100%);
+    }
+
+    .timeline__head {
+      max-width: 36rem;
+      margin: 0 auto 2.25rem;
+      text-align: center;
+    }
+
+    .timeline__head .panel__label {
+      margin-bottom: 0.55rem;
+    }
+
+    .timeline__head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 0.55rem;
+    }
+
+    .timeline__head p {
+      font-weight: 300;
+      color: var(--dusk);
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+
+    .timeline__list {
+      list-style: none;
+      max-width: 36rem;
+      margin: 0 auto;
+      position: relative;
+      padding: 0.25rem 0 0.5rem;
+    }
+
+    .timeline__list::before {
+      content: "";
+      position: absolute;
+      left: 0.85rem;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 2px;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--blue) 15%, transparent),
+        color-mix(in srgb, var(--blue-mid) 55%, transparent),
+        color-mix(in srgb, var(--gold) 45%, transparent)
+      );
+      border-radius: 2px;
+    }
+
+    .timeline__item {
+      position: relative;
+      padding: 0 0 1.85rem 2.85rem;
+    }
+
+    .timeline__item:last-child {
+      padding-bottom: 0.35rem;
+    }
+
+    .timeline__dot {
+      position: absolute;
+      left: 0.42rem;
+      top: 0.35rem;
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--blue-mid), var(--blue));
+      border: 2px solid #f4f8fc;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 22%, transparent);
+      z-index: 1;
+    }
+
+    .timeline__item.is-future .timeline__dot {
+      background: linear-gradient(145deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 28%, transparent);
+    }
+
+    .timeline__item.is-open .timeline__dot {
+      background: linear-gradient(145deg, #9ec4e8, var(--blue-mid));
+    }
+
+    .timeline__when {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--dusk) 70%, transparent);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline__card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      padding: 1.05rem 1.15rem 1.15rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 32px rgba(47, 111, 173, 0.08);
+    }
+
+    .timeline__card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.35rem, 3.2vw, 1.65rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline__card p {
+      font-weight: 300;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--dusk);
+    }
+
+    .timeline__thumb {
+      display: block;
+      margin-top: 0.85rem;
+      width: 100%;
+      max-width: 11rem;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 3px;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--blue) 10%, #fff);
+    }
+
+    .timeline__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .timeline__thumb:hover img,
+    .timeline__thumb:focus-visible img {
+      transform: scale(1.05);
+    }
+
+    .timeline__thumb:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .timeline__more {
+      margin: 1.75rem auto 0;
+      max-width: 36rem;
+      padding-left: 2.85rem;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--blue);
+      line-height: 1.5;
+    }
+
+    html.night .timeline {
+      background: linear-gradient(180deg, var(--mist) 0%, #152033 55%, #0f1a28 100%);
+    }
+
+    html.night .timeline__card {
+      background: rgba(20, 36, 56, 0.72);
+      border-color: rgba(126, 176, 220, 0.2);
+    }
+
+    html.night .timeline__list::before {
+      background: linear-gradient(
+        180deg,
+        rgba(126, 176, 220, 0.15),
+        rgba(90, 159, 212, 0.45),
+        rgba(232, 176, 32, 0.35)
+      );
+    }
+
+    html.night .timeline__dot {
+      border-color: #152033;
+    }
+
     /* —— Moments gallery —— */
     .moments {
       padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
@@ -1360,6 +1548,7 @@
 
       .letter,
       .keepsake,
+      .timeline,
       .moments,
       .extras {
         padding-left: max(1rem, env(safe-area-inset-left));
@@ -1374,6 +1563,7 @@
       .letter__inner,
       .keepsake__frame,
       .panel,
+      .timeline__card,
       .closing__card {
         padding: 1.25rem 1.05rem;
         border-radius: 4px;
@@ -1790,7 +1980,7 @@
         <span class="brand__hint">dokun — fotoğraf</span>
       </button>
       <p class="lede">
-        Bugün yanındaydım: elin elimde, gülüşün aklımda, ve annenin adıyla yeni bir başlangıç.
+        Sen olmasan bu kadar ilerlemezdim. Seni seviyorum — ve bu sayfa senin için burada.
       </p>
       <a class="cta" href="#mektup">
         Oku
@@ -1815,22 +2005,19 @@
       <p class="letter__date">für Kadriye</p>
       <h2>Hallo, Kadriye.</h2>
       <p>
-        Bu bir web sitesi gibi görünüyor; aslında sana yazılmış bir mektup. Bugünü unutmamak için buraya bıraktım.
+        Bu bir site gibi duruyor; aslında sana yazılmış bir mektup. İstediğin zaman aç — burası senin için kalıyor.
       </p>
       <p>
-        Her şey Almanca ile başladı. “Bu nasıl denir?” diye sordum, sen cevapladın — sonra konuşmak, sadece ders olmaktan çıktı. Bugün ise yan yana oturduk, ellerimiz birbirinde kaldı, güzel bir gün geçirdik.
+        Seninle olmak bana hız katıyor. Daha sabırlı, daha cesur, daha net oluyorum — çünkü sen yanımdayken gerisi kendiliğinden geliyor. Sen olmasan bu kadar ilerlemezdim.
       </p>
       <p>
-        Seninle ilk dövmeni yaptık: annenin adı — Mualla — ve yanında bir papatya. O anı seninle paylaşmak özeldi. Sonra yemek yedik, fotoğraflar çektik, güldük. Bittiğinde “sana bisiklet sürmeyi öğreteceğim” dedin — bir sonraki buluşmamızı da senin cümlenle sevdim.
-      </p>
-      <p>
-        Bu yüzden sana sade ve net soruyorum:
+        Birbirimize “seni seviyorum” diyoruz. Ben de diyorum — net ve samimi:
       </p>
       <p class="love-line">
         <span class="typed" id="typed"></span>
       </p>
       <p class="letter__ps">
-        P.S. Bisiklet dersinde yanında olacağım. Elini yine tutarım — söz.
+        P.S. Bu sayfa senin. İstediğin kadar geri gel.
       </p>
       <span class="sign">Ömer</span>
     </div>
@@ -1840,9 +2027,9 @@
     <div class="keepsake__frame reveal">
       <div class="keepsake__head">
         <p class="keepsake__label">Ein Andenken · Bir anı</p>
-        <h2>Bugünü saklıyorum.</h2>
+        <h2>Seninle ilerliyorum.</h2>
         <p class="keepsake__sub">
-          Küçük bir anı defteri. Ciddi, sakin, senin için — paylaşılınca da yakışsın diye.
+          Bu sayfa bir anı defteri. Zamanla büyüsün diye buraya koydum — sen oldukça satırlar da çoğalır.
         </p>
       </div>
 
@@ -1853,44 +2040,44 @@
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite I</span>
-            <time>Başlangıç</time>
+            <time>Sen</time>
           </div>
-          <h3>Almanca ile başladık.</h3>
+          <h3>Sen olmasan.</h3>
           <p>
-            Sorularım bahaneydi; asıl istediğim seni tanımakti. Sen sabırla cevap verdin. O küçük konuşmalar bizi buraya getirdi.
+            Bu kadar yol alamazdım. Seninle konuşmak, gülmek, yan yana durmak — hepsi beni ileri çekiyor. İlerleme yalnız ders değil; kalpte de oluyor.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite II</span>
-            <time>Bugün</time>
+            <time>Biz</time>
           </div>
           <h3>Yan yana.</h3>
           <p>
-            Ellerimiz uzun süre birbirinde kaldı. Konuştuk, güldük, yürüdük. En güzel kısım karmaşık değildi — sadece seninle olmaktı.
+            Her seferinde biraz daha rahat, biraz daha biz. En güzel kısım hâlâ aynı: seninle olmak.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite III</span>
-            <time>Dövme</time>
+            <time>Anı</time>
           </div>
           <h3>Mualla ve papatya.</h3>
           <p>
-            İlk dövmeni birlikte yaşadık. Annenin adını ve yanındaki papatyayı — bu günü de onunla hatırlayacağım.
+            Seninle paylaştığımız o gün hâlâ burada. Annenin adı, yanındaki çiçek — bu defterin en özel sayfalarından biri.
           </p>
         </article>
 
         <article class="page reveal">
           <div class="page__meta">
             <span>Seite IV</span>
-            <time>Sonra</time>
+            <time>Foto</time>
           </div>
-          <h3>Bisiklet sözü.</h3>
+          <h3>Karelerimiz.</h3>
           <p>
-            “Sana bisiklet sürmeyi öğreteceğim” demen, bugünün ardından en tatlı cümleydi. Bir sonraki buluşmayı da heyecanla bekliyorum.
+            Gülüşlerin, parkın, yan yana çektiğimiz kareler aşağıda. Asıl kalıcı olan, senin yanımda olduğun hissi.
           </p>
         </article>
 
@@ -1901,22 +2088,95 @@
           </div>
           <h3>Kadriye.</h3>
           <p>
-            8 Kasım senin günün. Havaalanındaki geç saatlerin olduğunu biliyorum — bu sayfa yine de senin için açık. Fotoğraflar aşağıda; bu defter seninle büyüyor.
+            8 Kasım senin günün. Bu sayfa her saatte açık. Sen oldukça bu defter de büyümeye devam eder.
           </p>
         </article>
       </div>
 
       <p class="keepsake__note">
-        “Bugün seninle olmak, yeterdi.”
+        “Sen olmasan bu kadar ilerlemezdim.”
       </p>
     </div>
+  </section>
+
+  <section class="timeline" id="zaman">
+    <div class="timeline__head reveal">
+      <p class="panel__label">Unsere Zeit · Bizim zaman</p>
+      <h2>Zaman çizgisi.</h2>
+      <p>Her önemli gün bir satır. Bu defter seninle büyümeye devam edecek.</p>
+    </div>
+
+    <ol class="timeline__list">
+      <li class="timeline__item reveal">
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <time class="timeline__when">Başlangıç</time>
+          <h3>Seninle yol almak.</h3>
+          <p>
+            Almanca ile başlayan konuşmalar, sonra gülüşler, sonra “biz”. Sen olmasan bu kadar ilerlemezdim — çizginin ilk noktası bu.
+          </p>
+        </div>
+      </li>
+
+      <li class="timeline__item reveal">
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <time class="timeline__when">Ağustos 2026</time>
+          <h3>Mualla ve papatya.</h3>
+          <p>
+            İlk dövmeni birlikte yaşadık. Annenin adı, yanında bir papatya — bu gün defterin en özel satırlarından biri.
+          </p>
+          <button type="button" class="timeline__thumb" data-src="dovme.jpg" data-cap="Mualla ve papatya." aria-label="Dövme fotoğrafını aç">
+            <img src="dovme.jpg" alt="Mualla ve papatya" loading="lazy" />
+          </button>
+        </div>
+      </li>
+
+      <li class="timeline__item reveal">
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <time class="timeline__when">Ağustos 2026</time>
+          <h3>Parkta, yan yana.</h3>
+          <p>
+            Ağaçların altında, gülüşlerinle. Fotoğraflar kaldı; asıl kalan, senin yanımda olduğun hissi.
+          </p>
+          <button type="button" class="timeline__thumb" data-src="photos/00-biz.jpg" data-cap="Biz." aria-label="Park fotoğrafını aç">
+            <img src="photos/00-biz.jpg" alt="Biz parkta" loading="lazy" />
+          </button>
+        </div>
+      </li>
+
+      <li class="timeline__item reveal is-open">
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <time class="timeline__when">Bugün · Her gün</time>
+          <h3>Bu mektup.</h3>
+          <p>
+            İstediğin zaman aç. Burası senin için kalıyor — yeni günler geldikçe yeni satırlar eklenecek.
+          </p>
+        </div>
+      </li>
+
+      <li class="timeline__item reveal is-future">
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <time class="timeline__when">8 Kasım</time>
+          <h3>Kadriye günü.</h3>
+          <p>
+            Takvimde yıldızlı. O güne kadar — ve o günden sonra da — burası açık.
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="timeline__more reveal">Sonraki satır: seninle yazılacak…</p>
   </section>
 
   <section class="moments" id="fotolar">
     <div class="moments__head reveal">
       <p class="panel__label">Unsere Fotos · Bizim kareler</p>
-      <h2>Bugünden.</h2>
-      <p>Bugünden kareler. Seninle olan her anı burada tutuyorum.</p>
+      <h2>Bizden.</h2>
+      <p>Seninle olan her kare burada — istediğin zaman bak.</p>
     </div>
     <div class="moments__grid" id="moments-grid">
       <button type="button" class="moments__item" data-src="photos/00-biz.jpg" data-cap="Biz." aria-label="Fotoğrafı aç">
@@ -1925,82 +2185,133 @@
           <figcaption>Biz</figcaption>
         </figure>
       </button>
+      <button type="button" class="moments__item" data-src="photos/31.jpg" data-cap="Parkta." aria-label="Fotoğrafı aç">
+        <figure>
+          <img src="photos/31.jpg" alt="Parkta" loading="lazy" />
+          <figcaption>Park</figcaption>
+        </figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/34.jpg" data-cap="Gülüşün." aria-label="Fotoğrafı aç">
+        <figure>
+          <img src="photos/34.jpg" alt="Kadriye" loading="lazy" />
+          <figcaption>Gülüşün</figcaption>
+        </figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/25.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/25.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/26.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/26.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/27.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/27.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/28.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/28.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/29.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/29.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/30.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/30.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/32.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/32.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/33.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/33.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/35.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/35.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/36.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/36.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/37.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/37.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/38.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/38.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
+      <button type="button" class="moments__item" data-src="photos/39.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
+        <figure><img src="photos/39.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
+      </button>
       <button type="button" class="moments__item" data-src="photos/02.jpg" data-cap="Gülüşün." aria-label="Fotoğrafı aç">
         <figure>
           <img src="photos/02.jpg" alt="Kadriye" loading="lazy" />
           <figcaption>Gülüşün</figcaption>
         </figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/15.jpg" data-cap="Telefon oyunları." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/15.jpg" data-cap="Önceki günlerden." aria-label="Fotoğrafı aç">
         <figure>
           <img src="photos/15.jpg" alt="Kadriye" loading="lazy" />
-          <figcaption>Oyun</figcaption>
+          <figcaption>Önceki</figcaption>
         </figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/01.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/01.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/01.jpg" alt="" loading="lazy" /><figcaption>01</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/03.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/03.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/03.jpg" alt="" loading="lazy" /><figcaption>03</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/04.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/04.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/04.jpg" alt="" loading="lazy" /><figcaption>04</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/05.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/05.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/05.jpg" alt="" loading="lazy" /><figcaption>05</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/06.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/06.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/06.jpg" alt="" loading="lazy" /><figcaption>06</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/07.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/07.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/07.jpg" alt="" loading="lazy" /><figcaption>07</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/08.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/08.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/08.jpg" alt="" loading="lazy" /><figcaption>08</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/09.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/09.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/09.jpg" alt="" loading="lazy" /><figcaption>09</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/10.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/10.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/10.jpg" alt="" loading="lazy" /><figcaption>10</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/11.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/11.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/11.jpg" alt="" loading="lazy" /><figcaption>11</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/12.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/12.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/12.jpg" alt="" loading="lazy" /><figcaption>12</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/13.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/13.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/13.jpg" alt="" loading="lazy" /><figcaption>13</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/14.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/14.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/14.jpg" alt="" loading="lazy" /><figcaption>14</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/16.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/16.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/16.jpg" alt="" loading="lazy" /><figcaption>16</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/17.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/17.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/17.jpg" alt="" loading="lazy" /><figcaption>17</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/18.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/18.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/18.jpg" alt="" loading="lazy" /><figcaption>18</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/19.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/19.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/19.jpg" alt="" loading="lazy" /><figcaption>19</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/20.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/20.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/20.jpg" alt="" loading="lazy" /><figcaption>20</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/21.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/21.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/21.jpg" alt="" loading="lazy" /><figcaption>21</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/22.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/22.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/22.jpg" alt="" loading="lazy" /><figcaption>22</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/23.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/23.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/23.jpg" alt="" loading="lazy" /><figcaption>23</figcaption></figure>
       </button>
-      <button type="button" class="moments__item" data-src="photos/24.jpg" data-cap="Bugünden." aria-label="Fotoğrafı aç">
+      <button type="button" class="moments__item" data-src="photos/24.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
         <figure><img src="photos/24.jpg" alt="" loading="lazy" /><figcaption>24</figcaption></figure>
       </button>
     </div>
@@ -2042,7 +2353,7 @@
       </svg>
       <h2>Benimle çıkar mısın?</h2>
       <p>
-        Kadriye — bugün seninle güzel bir gün geçirdim. Bu mektubu da onun için yazdım. Cevabın ne olursa olsun, sorum net: benimle çıkar mısın?
+        Kadriye — sen olmasan bu kadar ilerlemezdim. Seni seviyorum. Ve şimdi net soruyorum: benimle çıkar mısın?
       </p>
       <span class="closing__seal">Ich liebe dich. — Ömer</span>
       <button type="button" class="again" id="again">Başa dön</button>
@@ -2138,12 +2449,12 @@
     /* Intro */
     const intro = document.getElementById("intro");
     const envelope = document.getElementById("envelope");
-    /* —— Music: YouTube (Sen bana baktığın zaman) + optional local music.mp3 —— */
+    /* —— Music: YouTube (b-bI_QerqJ0) + optional local music.mp3 —— */
     let ytPlayer = null;
     let musicReady = false;
     let musicMuted = false;
     let usingYt = false;
-    const YT_ID = "Z6adfl44qCI";
+    const YT_ID = "b-bI_QerqJ0";
     const musicBtn = document.getElementById("music-btn");
     const bgMusic = document.getElementById("bg-music");
     bgMusic.volume = 0.55;
@@ -2406,7 +2717,7 @@
       if (typedStarted) return;
       typedStarted = true;
       const el = document.getElementById("typed");
-      const text = "Benimle çıkar mısın?";
+      const text = "Ich liebe dich.";
       if (reduce) {
         el.textContent = text;
         el.classList.add("is-done");
@@ -2505,7 +2816,13 @@
       const btn = e.target.closest(".moments__item");
       if (!btn) return;
       e.stopPropagation();
-      showPhoto(btn.dataset.src, btn.dataset.cap || "Bugünden.");
+      showPhoto(btn.dataset.src, btn.dataset.cap || "Bizden.");
+    });
+    document.querySelector(".timeline")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".timeline__thumb");
+      if (!btn) return;
+      e.stopPropagation();
+      showPhoto(btn.dataset.src, btn.dataset.cap || "Anı.");
     });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && photo.classList.contains("is-open")) closePhoto();
@@ -2548,21 +2865,21 @@
 
     /* —— Daily sentence —— */
     const dailyLines = [
-      "Bugün seninle olmak, yeterdi.",
+      "Sen olmasan bu kadar ilerlemezdim.",
+      "Seni seviyorum — net ve samimi.",
       "Für dich — ve sadece für dich.",
-      "Mualla ve papatya: seninle hatırladığım gün.",
-      "Ellerin elimde kaldı; aklım da sende.",
-      "Bisiklet sözünü unutmadım. Heyecanla bekliyorum.",
+      "Seninle olmak bana hız katıyor.",
+      "Mualla ve papatya: defterin özel sayfası.",
       "Ich liebe dich — kısa, net, samimi.",
       "Bu sayfa senin için açık. Her saat.",
       "8 Kasım — Kadriye günü. Takvimde yıldızlı.",
-      "Almanca ile başladık; gülüşlerinle devam ediyoruz.",
-      "Fotoğraflar burada, anılar daha yakında.",
-      "Bir sonraki buluşmada yine yanındayım.",
       "Gülüşün aklımda kaldı.",
+      "Fotoğraflar burada; asıl anı sende.",
       "Bu mektup kapanmıyor; sen istediğin kadar aç.",
       "Mavi sevdiğin renk, bu sayfanın da rengi.",
-      "Benimle çıkar mısın? — sorum bu.",
+      "Yan yana olmak, en güzel ilerleme.",
+      "Cevabın ne olursa olsun — burası senin.",
+      "Her açılışta taze. Senin için.",
     ];
     const dayIndex = Math.floor(Date.now() / 86400000) % dailyLines.length;
     document.getElementById("daily-text").textContent = dailyLines[dayIndex];
