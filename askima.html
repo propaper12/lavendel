@@ -515,6 +515,64 @@
 
     .cta:hover svg { transform: translateY(3px); }
 
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .cta--ghost {
+      background: transparent;
+      color: var(--blue);
+      border: 1px solid color-mix(in srgb, var(--blue) 45%, transparent);
+      box-shadow: none;
+    }
+
+    .cta--ghost:hover {
+      background: var(--blue);
+      color: #f4f8fc;
+      box-shadow: 0 10px 28px rgba(47, 111, 173, 0.28);
+    }
+
+    .photos-cta {
+      padding: clamp(3rem, 8vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+      text-align: center;
+      background: linear-gradient(180deg, var(--mist) 0%, #e4eef8 100%);
+    }
+
+    .photos-cta__inner {
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+
+    .photos-cta h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      font-style: italic;
+      margin: 0.4rem 0 0.55rem;
+    }
+
+    .photos-cta p {
+      font-weight: 300;
+      color: var(--dusk);
+      margin-bottom: 1.35rem;
+      line-height: 1.65;
+    }
+
+    .timeline__link {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--blue);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .timeline__link:hover { text-decoration: underline; }
+
     .hint {
       margin-top: 1.15rem;
       font-size: 0.78rem;
@@ -2044,12 +2102,10 @@
       <p class="lede">
         Sen olmasan bu kadar ilerlemezdim. Seni seviyorum — ve bu sayfa senin için burada.
       </p>
-      <a class="cta" href="#mektup">
-        Oku
-        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M8 3v10M8 13l4-4M8 13L4 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <div class="cta-row">
+        <a class="cta" href="#mektup">Oku</a>
+        <a class="cta cta--ghost" href="fotograflar.html">Fotoğraflar</a>
+      </div>
       <p class="hint">Dokun: kalpler · Ayçiçeği: gece · ♪ müzik</p>
     </div>
   </header>
@@ -2212,13 +2268,11 @@
         <span class="timeline__dot" aria-hidden="true"></span>
         <div class="timeline__card">
           <time class="timeline__when">Ağustos 2026</time>
-          <h3>Park günü.</h3>
+          <h3>Yan yana.</h3>
           <p>
-            Çimen, güneş, gülüşler. Bu günün kareleri ayrı bir bölümde — istediğin zaman oradan bak.
+            Çimen, güneş, gülüşler. Tüm kareler Fotoğraflar sayfasında.
           </p>
-          <button type="button" class="timeline__thumb" data-src="photos/86.jpg" data-cap="Biz." aria-label="Park günü fotoğrafını aç">
-            <img src="photos/86.jpg" alt="Biz parkta" loading="lazy" />
-          </button>
+          <a class="timeline__link" href="fotograflar.html">Fotoğraflara git →</a>
         </div>
       </li>
 
@@ -2248,228 +2302,14 @@
     <p class="timeline__more reveal">Sonraki satır: seninle yazılacak…</p>
   </section>
 
-
-  <section class="album" id="bugun">
-    <div class="album__head reveal">
-      <p class="panel__label">Heute · Yeni anılar</p>
-      <h2>Park günü.</h2>
-      <p>Bu günün kareleri burada — diğerlerinden ayrı, özel bir bölüm.</p>
-    </div>
-    <div class="moments__grid album__grid" id="album-grid">
-      <button type="button" class="moments__item moments__item--wide" data-src="photos/86.jpg" data-cap="Biz." aria-label="Fotoğrafı aç"><figure><img src="photos/86.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure></button>
-      <button type="button" class="moments__item moments__item--wide" data-src="photos/70.jpg" data-cap="Parkta." aria-label="Fotoğrafı aç"><figure><img src="photos/70.jpg" alt="" loading="lazy" /><figcaption>Park</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/51.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/51.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/52.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/52.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/53.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/53.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/54.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/54.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/55.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/55.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/56.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/56.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/57.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/57.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/58.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/58.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/59.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/59.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/60.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/60.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/61.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/61.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/62.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/62.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/63.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/63.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/64.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/64.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/65.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/65.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/66.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/66.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/67.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/67.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/68.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/68.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/69.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/69.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/71.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/71.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/72.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/72.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/73.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/73.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/74.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/74.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/75.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/75.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/76.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/76.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/77.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/77.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/78.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/78.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/79.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/79.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/80.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/80.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/81.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/81.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/82.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/82.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/83.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/83.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/84.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/84.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-      <button type="button" class="moments__item" data-src="photos/85.jpg" data-cap="Bu gün." aria-label="Fotoğrafı aç"><figure><img src="photos/85.jpg" alt="" loading="lazy" /><figcaption>Bu gün</figcaption></figure></button>
-
-    </div>
-  </section>
-  <section class="moments" id="fotolar">
-    <div class="moments__head reveal">
+  <section class="photos-cta" id="fotolar">
+    <div class="photos-cta__inner reveal">
       <p class="panel__label">Unsere Fotos · Bizim kareler</p>
-      <h2>Önceki kareler.</h2>
-      <p>Daha önceki günlerden kalanlar — hepsi burada.</p>
-    </div>
-    <div class="moments__grid" id="moments-grid">
-      <button type="button" class="moments__item" data-src="photos/00-biz.jpg" data-cap="Biz." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/00-biz.jpg" alt="Biz" loading="lazy" />
-          <figcaption>Biz</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/43.jpg" data-cap="Yan yana." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/43.jpg" alt="Biz" loading="lazy" />
-          <figcaption>Yeni</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/44.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/44.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/45.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/45.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/46.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/46.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/47.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/47.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/48.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/48.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/49.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/49.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/50.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/50.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/40.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/40.jpg" alt="" loading="lazy" /><figcaption>Yeni</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/31.jpg" data-cap="Parkta." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/31.jpg" alt="Parkta" loading="lazy" />
-          <figcaption>Park</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/34.jpg" data-cap="Gülüşün." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/34.jpg" alt="Kadriye" loading="lazy" />
-          <figcaption>Gülüşün</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/25.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/25.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/26.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/26.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/27.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/27.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/28.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/28.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/29.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/29.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/30.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/30.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/32.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/32.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/33.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/33.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/35.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/35.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/36.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/36.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/37.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/37.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/38.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/38.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/39.jpg" data-cap="Bizden." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/39.jpg" alt="" loading="lazy" /><figcaption>Biz</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/02.jpg" data-cap="Gülüşün." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/02.jpg" alt="Kadriye" loading="lazy" />
-          <figcaption>Gülüşün</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/15.jpg" data-cap="Önceki günlerden." aria-label="Fotoğrafı aç">
-        <figure>
-          <img src="photos/15.jpg" alt="Kadriye" loading="lazy" />
-          <figcaption>Önceki</figcaption>
-        </figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/01.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/01.jpg" alt="" loading="lazy" /><figcaption>01</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/03.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/03.jpg" alt="" loading="lazy" /><figcaption>03</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/04.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/04.jpg" alt="" loading="lazy" /><figcaption>04</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/05.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/05.jpg" alt="" loading="lazy" /><figcaption>05</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/06.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/06.jpg" alt="" loading="lazy" /><figcaption>06</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/07.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/07.jpg" alt="" loading="lazy" /><figcaption>07</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/08.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/08.jpg" alt="" loading="lazy" /><figcaption>08</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/09.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/09.jpg" alt="" loading="lazy" /><figcaption>09</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/10.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/10.jpg" alt="" loading="lazy" /><figcaption>10</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/11.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/11.jpg" alt="" loading="lazy" /><figcaption>11</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/12.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/12.jpg" alt="" loading="lazy" /><figcaption>12</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/13.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/13.jpg" alt="" loading="lazy" /><figcaption>13</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/14.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/14.jpg" alt="" loading="lazy" /><figcaption>14</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/16.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/16.jpg" alt="" loading="lazy" /><figcaption>16</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/17.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/17.jpg" alt="" loading="lazy" /><figcaption>17</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/18.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/18.jpg" alt="" loading="lazy" /><figcaption>18</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/19.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/19.jpg" alt="" loading="lazy" /><figcaption>19</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/20.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/20.jpg" alt="" loading="lazy" /><figcaption>20</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/21.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/21.jpg" alt="" loading="lazy" /><figcaption>21</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/22.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/22.jpg" alt="" loading="lazy" /><figcaption>22</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/23.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/23.jpg" alt="" loading="lazy" /><figcaption>23</figcaption></figure>
-      </button>
-      <button type="button" class="moments__item" data-src="photos/24.jpg" data-cap="Anılar." aria-label="Fotoğrafı aç">
-        <figure><img src="photos/24.jpg" alt="" loading="lazy" /><figcaption>24</figcaption></figure>
-      </button>
+      <h2>Fotoğraflar</h2>
+      <p>Tüm kareler ayrı bir sayfada — sırayla, sade.</p>
+      <a class="cta cta--ghost" href="fotograflar.html">Fotoğraflar</a>
     </div>
   </section>
-
   <section class="extras" id="extras">
     <div class="panel reveal" id="daily-panel">
       <p class="panel__label">Satz des Tages · Bugünün cümlesi</p>
@@ -2971,12 +2811,7 @@
       e.stopPropagation();
       showPhoto(btn.dataset.src, btn.dataset.cap || "Bizden.");
     });
-    document.getElementById("album-grid")?.addEventListener("click", (e) => {
-      const btn = e.target.closest(".moments__item");
-      if (!btn) return;
-      e.stopPropagation();
-      showPhoto(btn.dataset.src, btn.dataset.cap || "Bu gün.");
-    });
+    /* album-grid removed — photos live on fotograflar.html */
     document.querySelector(".timeline")?.addEventListener("click", (e) => {
       const btn = e.target.closest(".timeline__thumb");
       if (!btn) return;
